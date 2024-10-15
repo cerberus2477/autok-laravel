@@ -1,0 +1,3 @@
+beolvasást megcsinálni a modelshez
+a makersnél beolvas még két sort az aljén ami nem kéne
+
