@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('fuels', function (Blueprint $table) {
             $table->id();
-            $table->name();
+            $table->string('name');
         });
     }
 

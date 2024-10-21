@@ -1,0 +1,90 @@
+:root {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --link-color: #bb86fc;
+    --link-hover-color: #3700b3;
+    --nav-background-color: #1f1f1f;
+    --border-color: #333;
+}
+
+
+/* NAV -----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/* General styling for the nav */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: var(--nav-background-color);
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: var(--link-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+/* Hover effect for links */
+nav ul li a:hover {
+    background-color: var(--link-hover-color);
+    border-radius: 5px;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
+
+
+
+/* Általános dolgok ----------------------------------------------------------------------------- */
+
+header,
+footer {
+    background-color: var(--nav-background-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+p {
+    color: var(--text-color);
+    margin: 20px 0;
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}

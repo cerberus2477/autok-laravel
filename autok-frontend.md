@@ -82,30 +82,15 @@ kell bele sokminden
 
 ```
 
-a fájl teteje még nincs meg!!!
-
 
 
 home.blade.php is van (lehet ez a példa?)
 
 
 
-minden modelhez kéna 3 view
+minden modelhez kéne  3 view
 
 - list, edit, create
-
-
-
-
-
-***layout***
-
-- kell bele header
-
-```html
-
-                                                   
-```
 
 
 
@@ -147,7 +132,7 @@ laravel dokuban a blade-t át kéne nézni - fent van teamsen
 
 - létrehozza és belerak egy csomó mindent
 
-***\routes\web***
+***\routes\web.php***
 
 ```php
 Route::get('makers',  [MakerController::class, 'index']) ->name('makers');
@@ -160,7 +145,132 @@ public function index()
 }
 ```
 
-és nagyon nagyon sok ilyen
+```php
+Route::get('fuels',  [FuelController::class, 'index']) ->name('fuels');
+Route::post('fuel',  [FuelController::class, 'save']) ->name('saveFuel');
+Route::get('fuel/create',  [FuelController::class, 'create']) ->name('createFuel');
+Route::post('fuel/{id}}',  [FuelController::class, 'edit']) ->name('editFuel');
+Route::patch('fuel/create',  [FuelController::class, 'update']) ->name('updateFuel');
+Route::delete('fuel/{id}',  [FuelController::class, 'delete']) ->name('deleteFuel');
+Route::post('fuels/search',  [FuelController::class, 'search']) ->name('searchFuel');
+```
 
-ezek a requestek
+
+
+create-új form, amibe be lehet írni az új rekordot
+
+save - menti a változásokat
+
+
+
+## Elvesztek a todok + seeder magyarázat, but whatever
+
+- kéne új mező a makers táblábe, ami a logó
+- seederek kellenének, az az egész kimaradt előző keddről
+
+
+
+## márkák megjelenítése:
+
+- egyszerre pl csak 25t jelenítsünk meg az oldalon
+- vagy betűnként kirakunk egy egy gombot ami szűri és csak pl az a betűs márkákat teszi ki + * ami mindet kiteszi
+  
+
+
+
+## 10.21
+
+- létrehoztam a fuelcontrollert és carModelcontrollert paranccsal, belemásoltam lényegében a mekrcontroller tartalmát
+
+(mi az a controller?)
+
+- csináltam menüt (app.blade.php), menü elemekre kattinta megfelelő get request (web route alapján)
+- web.phpba beírtam a routeokat amik kellettek
+
+- css-t csináltam a public mappába, linkeltem az app.blade.php fáj headjében
+
+
+
+- 2. lépés (list view) létrehozása carModels táblára
+     - kéne a fuelsre is
+- database.seederbe beletettem ezt, így automatikusan fut majd a két seeder ilyen sorrendben
+- ```php artisan db:seed```
+
+```php
+
+        $this->call([
+            FuelTableSeeder::class,
+                // CassissesTableSeeder::class,
+            CarModelTableSeeder::class,
+        ]);
+```
+
+
+
+
+
+
+
+## TODO
+
+- később kellene gomb a sorokba
+  - törlés, módosítás, 
+  - alul gondolom új gomb
+
+​	
+
+- a carModels seeder nem jó, a csvből kéne kibogarászni ig
+
+
+
+
+
+xdebug felgyorsítása:
+
+xdebug chrome kiegészítő
+
+xdebug.start.with.request = triegger (yes helyett)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### git pullnál kell pl
+
+```composer update``` kell, az létrehozza a vendort.
+
+```php artisan migrate```
+
+```php artisan mysql:createdb cars```
+
+stb stb andrás tudja
+
+
+
+
+
+### Menübe később (app.blade.php)
+
+```php
+            <!-- <li><a href="{{route('cassies')}}">Karosszériák</a></li> -->
+            <!-- <li><a href="{{route('clients')}}">Ügyfelek</a></li> -->
+                            <!-- <li><a href="{{route('types')}}">Típusok</a></li> -->
+            <!-- <li><a href="{{route('vehicles')}}">Járművek</a></li> -->
+```
 

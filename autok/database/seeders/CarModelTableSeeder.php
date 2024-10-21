@@ -20,7 +20,7 @@ class CarModelTableSeeder extends Seeder
         $this->command->getOutput()->progressStart(count($makers));
         foreach ($makers as $maker) {
             $models = DB::select('SELECT DISTINCT model from autok WHERE make = "' . $maker->name . '";');
-            //a fenti sor nekünk nem működik, tanárúrnak nem egy scvbén van minden hanem így szépen. nekünk ki kell bogaráészni
+            //a fenti sor nekünk nem működik, tanárúrnak nem egy csv-ben van minden hanem így szépen. nekünk ki kell bogarászni
             foreach ($models as $model) {
                 $item = new carModel([
                     'makerId => $maker->id',

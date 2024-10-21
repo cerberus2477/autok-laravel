@@ -12,7 +12,7 @@ class fillMakersFromCsv extends Command
      *
      * @var string
      */
-    protected $signature = 'mysql:fillmakersFromCsv';
+    protected $signature = 'mysql:fillMakersFromCsv';
 
     /**
      * The console command description.
