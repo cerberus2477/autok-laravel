@@ -3,7 +3,7 @@
 @section('title', 'Autómodellek (GET carModel)')
 
 <div>
-    <input type="button" value="Új hozzáadása">
+    <!-- <input type="button" class="btn" value="Új carModel hozzáadása" onclick={{route('createCarModel')}}> -->
     <table>
         <thead>
             <tr>
@@ -19,11 +19,11 @@
                     <td id="{{$entity->id}}">{{$entity->id}}</td>
                     <td>{{$entity->makerId}}</td>
                     <td>{{$entity->name}}</td>
-                    <td>
-                        <input type="button" class="btn" onclick="editRow()" value="Módosít">
-                        <input style="display: none;" type="button" class="btn" onclick={{route('fuels')}} value="Mentés">
-                        <input type="button" class="btn" onclick="deleteRow()" value="Töröl">
-                    </td>
+                    <!-- <td>
+                            <input type="button" class="btn" onclick="editRow()" value="Módosít">
+                            <input style="display: none;" type="button" class="btn" onclick={{route('fuels')}} value="Mentés">
+                            <input type="button" class="btn" onclick="{{route('fuels')}}" value="Töröl">
+                        </td> -->
                 </tr>
             @endforeach
         </tbody>

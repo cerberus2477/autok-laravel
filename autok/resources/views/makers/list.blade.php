@@ -15,6 +15,7 @@
                 <tr>
                     <td id="{{$entity->id}}">{{$entity->id}}</td>
                     <td>{{$entity->name}}</td>
+                    <!-- <td><img src="{{$entity->logo}}"></td> -->
                 </tr>
             @endforeach
         </tbody>
