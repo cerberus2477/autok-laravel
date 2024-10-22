@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
+@section('title', 'Gyártók (GET Maker)')
+
 <div>
-    <table>
+    <table class="editable">
         <thead>
             <tr>
                 <th>#</th>

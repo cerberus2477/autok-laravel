@@ -205,6 +205,10 @@ save - menti a változásokat
         ]);
 ```
 
+- ```php artisan db:seed --class=UserSeeder```
+
+## 10.22 kedd
+
 
 
 
@@ -219,9 +223,7 @@ save - menti a változásokat
 
 ​	
 
-- a carModels seeder nem jó, a csvből kéne kibogarászni ig
-
-
+- a makersnél beolvas még két sort az aljén ami nem kéne
 
 
 
@@ -246,6 +248,13 @@ xdebug.start.with.request = triegger (yes helyett)
 
 
 
+
+### minden megnyitásnál kell
+
+- xampp elindítás
+- ```php artisan serve```
+- localhost:8000/makers pl a cím
+- localhost/phpmyadmin létezik ofc (vagy parancssoros mysql)
 
 
 

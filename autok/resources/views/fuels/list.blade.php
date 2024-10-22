@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
+@section('title', 'Üzemanyag (GET Fuel)')
+
 <div>
-    <table>
+    <table class="editable">
         <thead>
             <tr>
                 <th>#</th>

@@ -6,15 +6,26 @@ use App\Http\Controllers\FuelController;
 use App\Http\Controllers\carModelController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
+//MAKER
 Route::get('makers', [MakerController::class, 'index'])->name('makers');
-// Route::get('makers', [MakerController::class, 'index'])->name('makers');
-// Route::post('makers', [MakerController::class, 'save'])->name('maker');
-// Route::get('maker/create', [MakerController::class, 'create'])->name('createMakers');
+Route::post('maker', [MakerController::class, 'save'])->name('maker');
+Route::get('maker/create', [MakerController::class, 'create'])->name('createMaker');
+Route::post('maker/{id}}', [FuelController::class, 'edit'])->name('editFuel');
+Route::patch('maker/create', [FuelController::class, 'update'])->name('updateFuel');
+Route::delete('maker/{id}', [FuelController::class, 'delete'])->name('deleteFuel');
+Route::post('maker/search', [FuelController::class, 'search'])->name('searchFuel');
 
+//CARMODEL
 Route::get('carModels', [carModelController::class, 'index'])->name('carModels');
+Route::post('carModel', [carModelController::class, 'save'])->name('saveCarModel');
+Route::get('carModel/create', [carModelController::class, 'create'])->name('createCarModel');
+Route::post('carModel/{id}}', [carModelController::class, 'edit'])->name('editCarModel');
+Route::patch('carModel/create', [carModelController::class, 'update'])->name('updateCarModel');
+Route::delete('carModel/{id}', [carModelController::class, 'delete'])->name('deleteCarModel');
+Route::post('carModels/search', [carModelController::class, 'search'])->name('searchCarModel');
 
 // FUEL
 Route::get('fuels', [FuelController::class, 'index'])->name('fuels');

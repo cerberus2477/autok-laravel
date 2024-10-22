@@ -5,6 +5,7 @@
     --clr-accent: #4e05a9;
     --clr-bg-light: #1f1f1f;
     --clr-border: #333;
+    --clr-highlight: rgb(113, 147, 242);
 }
 
 
@@ -135,10 +136,13 @@ tbody tr:hover td {
     /* Highlight row on hover */
 }
 
-/* Optional: Style for the table caption */
-caption {
-    caption-side: bottom;
-    padding: 10px;
-    font-size: 1.1em;
-    color: var(--clr-text);
+
+* {
+    box-sizing: border-box;
+}
+
+.edit,
+tbody tr:nth-child(odd) td.edit {
+    background-color: var(--clr-highlight);
+    color: var(--clr-bg-light);
 }
