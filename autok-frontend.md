@@ -308,18 +308,20 @@ name
 
 
 
-Új jármű
+#### Új jármű (főoldal mondjuk)
 
 rendszám
 
 alvázszám
 
-
-
 a többi adat kb legördülő
 
-menüsávban
-járművek
+
+
+
+
+#### menüsávban
+**járművek**
 gyártók
 modellek
 típusok
