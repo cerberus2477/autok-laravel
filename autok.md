@@ -1,13 +1,13 @@
 # miafaszvan - laravel autók api?
 
-1. ####  htdocs mappában
+####  1. htdocs mappában
 
    - ``` composer create-project laravel/laravel autok ```
 
 
       - ``` cd autok```
 
-2. #### .env fájlban adatbázis beállításainak módosítása
+#### 2. .env fájlban adatbázis beállításainak módosítása
 
    - 22. sortól kb ne legyen kikommentelve, dbnamet adjuk meg és sqlite helyett mysql
 	 - ``` php
@@ -18,7 +18,7 @@ DB_USERNAME=root
 DB_PASSWORD= 
 
 
-3. #### Létrehozunk egy adatbázis schemát
+#### 3. Létrehozunk egy adatbázis schemát
 
    stackoverflowt követjük: https://stackoverflow.com/questions/32191135/how-to-create-database-schema-table-in-laravel
    

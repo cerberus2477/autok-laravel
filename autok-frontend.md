@@ -283,3 +283,65 @@ stb stb andrás tudja
             <!-- <li><a href="{{route('vehicles')}}">Járművek</a></li> -->
 ```
 
+
+
+
+
+#### Karosszériákat ugyanugy mint az üzemanyagot
+
+ModelsSeeder
+foreach makers as maker
+
+models db select (select distinct model from car_db where car_db.maker)
+
+​	foreach (models as model{
+
+Model::create([
+
+'maker_id"
+
+name
+
+])})
+
+
+
+
+
+Új jármű
+
+rendszám
+
+alvázszám
+
+
+
+a többi adat kb legördülő
+
+menüsávban
+járművek
+gyártók
+modellek
+típusok
+karosszériák
+
+sebváltók
+
+üzemanyagok
+
+(ezek szótárfájlok, copy paste lesz)
+
+(ki/be jelentkezés)
+
+
+
+keresés van, rendezés, abc kezdőbetűi szűrés, az alján lapozás (pl csak els)
+
+#### modelleknél választunk egy gyártót
+új hozzáadása
+
+
+
+#### típusok same
+
+válassz gyártót, válassz modellt
