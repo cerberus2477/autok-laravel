@@ -30,15 +30,15 @@
 
                 <!-- ÁKOS -->
                 <!-- <tr>
-                                    <td><a href="route("editMakers", $entity->id)">Szerkesztés</a></td>
-                                    <td>
-                                        <form action="route("deleteMakers", $entity->id)" method="post">
-                                            @csrf
-                                            @method("DELETE")
-                                            <button type="submit">Törlés</button>
-                                        </form>
-                                    </td>
-                                </tr> -->
+                                        <td><a href="route("editMakers", $entity->id)">Szerkesztés</a></td>
+                                        <td>
+                                            <form action="route("deleteMakers", $entity->id)" method="post">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button type="submit">Törlés</button>
+                                            </form>
+                                        </td>
+                                    </tr> -->
             @endforeach
         </tbody>
     </table>

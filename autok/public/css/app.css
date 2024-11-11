@@ -8,6 +8,33 @@
     --clr-highlight: rgb(113, 147, 242);
 }
 
+.btn {
+
+    border-radius: 5px;
+    padding: 1.5rem .75rem;
+
+    background-color: var(--clr-highlight);
+    color: var(--clr-text);
+}
+
+.order {
+
+    border-radius: 5px;
+    padding: 1.5rem .75rem;
+
+    background-color: var(--clr-text);
+    color: var(--clr-bg-light);
+}
+
+a.btn {
+    margin: 1.5rem;
+    text-decoration: none;
+}
+
+
+.order {}
+
+
 
 /* NAV -----------------------------------------------------------------------------------------------------------------------------------------------------*/
 nav {

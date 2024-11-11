@@ -118,14 +118,6 @@ minden modelhez kéne  3 view
 
 
 
-
-
-
-
-laravel dokuban a blade-t át kéne nézni - fent van teamsen
-
-
-
 ## 3. lépés
 
 ```php artisan make:controller MakerController --resource```
@@ -157,24 +149,7 @@ Route::post('fuels/search',  [FuelController::class, 'search']) ->name('searchFu
 
 
 
-create-új form, amibe be lehet írni az új rekordot
 
-save - menti a változásokat
-
-
-
-## Elvesztek a todok + seeder magyarázat, but whatever
-
-- kéne új mező a makers táblábe, ami a logó
-- seederek kellenének, az az egész kimaradt előző keddről
-
-
-
-## márkák megjelenítése:
-
-- egyszerre pl csak 25t jelenítsünk meg az oldalon
-- vagy betűnként kirakunk egy egy gombot ami szűri és csak pl az a betűs márkákat teszi ki + * ami mindet kiteszi
-  
 
 
 
@@ -211,39 +186,16 @@ save - menti a változásokat
 
 
 
+## 11.11 hetfo - be kene fejezni xd
+bodies - karosszériák szótár tábla
+```cmd
+php artisan make:migration create_bodies_table
+```
 
-
-
-
-## TODO
-
-- később kellene gomb a sorokba
-  - törlés, módosítás, 
-  - alul gondolom új gomb
-
-​	
-
-- a makersnél beolvas még két sort az aljén ami nem kéne
-
-
-
-xdebug felgyorsítása:
-
-xdebug chrome kiegészítő
-
-xdebug.start.with.request = triegger (yes helyett)
-
-
-
-
-
-
-
-
-
-
-
-
+```cmd
+php artisan make:model Body
+```
+public $timestamps = false;
 
 
 
@@ -274,18 +226,6 @@ stb stb andrás tudja
 
 
 
-### Menübe később (app.blade.php)
-
-```php
-            <!-- <li><a href="{{route('cassies')}}">Karosszériák</a></li> -->
-            <!-- <li><a href="{{route('clients')}}">Ügyfelek</a></li> -->
-                            <!-- <li><a href="{{route('types')}}">Típusok</a></li> -->
-            <!-- <li><a href="{{route('vehicles')}}">Járművek</a></li> -->
-```
-
-
-
-
 
 #### Karosszériákat ugyanugy mint az üzemanyagot
 
@@ -308,32 +248,13 @@ name
 
 
 
-#### Új jármű (főoldal mondjuk)
-
-rendszám
-
-alvázszám
-
-a többi adat kb legördülő
 
 
 
 
 
-#### menüsávban
-**járművek**
-gyártók
-modellek
-típusok
-karosszériák
 
-sebváltók
 
-üzemanyagok
-
-(ezek szótárfájlok, copy paste lesz)
-
-(ki/be jelentkezés)
 
 
 
@@ -342,8 +263,3 @@ keresés van, rendezés, abc kezdőbetűi szűrés, az alján lapozás (pl csak 
 #### modelleknél választunk egy gyártót
 új hozzáadása
 
-
-
-#### típusok same
-
-válassz gyártót, válassz modellt

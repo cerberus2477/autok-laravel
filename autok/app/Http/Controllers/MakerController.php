@@ -15,6 +15,14 @@ class MakerController extends Controller
         return view('makers/list', ['entities' => Maker::all()]);
     }
 
+
+
+    public function models($idCarMaker)
+    {
+        //dolgokk
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

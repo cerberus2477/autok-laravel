@@ -4,19 +4,29 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MakerController;
 use App\Http\Controllers\FuelController;
 use App\Http\Controllers\carModelController;
+use App\Http\Controllers\VehichleController;
+use App\Http\Controllers\TrimController;
+use App\Http\Controllers\GearshiftController;
+use App\Http\Controllers\BodyController;
 
 Route::get('/', function () {
     return view('home');
 });
 
+//VEHICHLES
+Route::get('vehichles', [VehichleController::class, 'index'])->name('vehichles');
+
+//---------------------------------------------------------------------------------------------------------------
+
+
 //MAKER
 Route::get('makers', [MakerController::class, 'index'])->name('makers');
 Route::post('maker', [MakerController::class, 'save'])->name('maker');
 Route::get('maker/create', [MakerController::class, 'create'])->name('createMaker');
-Route::post('maker/{id}}', [FuelController::class, 'edit'])->name('editMaker');
-Route::patch('maker/create', [FuelController::class, 'update'])->name('updateMaker');
-Route::delete('maker/{id}', [FuelController::class, 'delete'])->name('deleteMaker');
-Route::post('maker/search', [FuelController::class, 'search'])->name('searchMaker');
+Route::post('maker/{id}}', [MakerController::class, 'edit'])->name('editMaker');
+Route::patch('maker/create', [MakerController::class, 'update'])->name('updateMaker');
+Route::delete('maker/{id}', [MakerController::class, 'delete'])->name('deleteMaker');
+Route::post('maker/search', [MakerController::class, 'search'])->name('searchMaker');
 
 //CARMODEL
 Route::get('carModels', [carModelController::class, 'index'])->name('carModels');
@@ -26,6 +36,18 @@ Route::post('carModel/{id}}', [carModelController::class, 'edit'])->name('editCa
 Route::patch('carModel/create', [carModelController::class, 'update'])->name('updateCarModel');
 Route::delete('carModel/{id}', [carModelController::class, 'delete'])->name('deleteCarModel');
 Route::post('carModels/search', [carModelController::class, 'search'])->name('searchCarModel');
+
+//TRIMS
+Route::get('trims', [TrimController::class, 'index'])->name('trims');
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+//BODIES
+Route::get('bodies', [BodyController::class, 'index'])->name('bodies');
+
+
+//GEARSHIFTS
+Route::get('gearshifts', [GearshiftController::class, 'index'])->name('gearshifts');
 
 // FUEL
 Route::get('fuels', [FuelController::class, 'index'])->name('fuels');
