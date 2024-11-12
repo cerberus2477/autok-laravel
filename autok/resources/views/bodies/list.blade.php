@@ -3,6 +3,7 @@
 @section('title', 'Karosszériák (GET Bodies)')
 
 <div>
+    <h3>Frissíteni kéne a Fuels táblából</h3>
     <a class="btn" href="{{route("createBody")}}">Új Body hozzáadása</a>
     <a class="order" href="{{route("bodies", ["sort_by" => "name", "sort_dir" => "asc"])}}" title="ABC">ABC</a>
     <a class="order" href="{{route("bodies", ["sort_by" => "name", "sort_dir" => "desc"])}}" title="ZYX">ZYX</a>
@@ -30,15 +31,15 @@
 
                 <!-- ÁKOS -->
                 <!-- <tr>
-                                                            <td><a href="route("editMakers", $entity->id)">Szerkesztés</a></td>
-                                                            <td>
-                                                                <form action="route("deleteMakers", $entity->id)" method="post">
-                                                                    @csrf
-                                                                    @method("DELETE")
-                                                                    <button type="submit">Törlés</button>
-                                                                </form>
-                                                            </td>
-                                                        </tr> -->
+                                                                <td><a href="route("editMakers", $entity->id)">Szerkesztés</a></td>
+                                                                <td>
+                                                                    <form action="route("deleteMakers", $entity->id)" method="post">
+                                                                        @csrf
+                                                                        @method("DELETE")
+                                                                        <button type="submit">Törlés</button>
+                                                                    </form>
+                                                                </td>
+                                                            </tr> -->
             @endforeach
         </tbody>
     </table>

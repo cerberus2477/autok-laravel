@@ -8,6 +8,7 @@ use App\Http\Controllers\VehichleController;
 use App\Http\Controllers\TrimController;
 use App\Http\Controllers\GearshiftController;
 use App\Http\Controllers\BodyController;
+use App\Http\Controllers\ColorController;
 
 Route::get('/', function () {
     return view('home');
@@ -71,7 +72,7 @@ Route::patch('gearshifts/{id}', [GearshiftController::class, 'update'])->name('u
 Route::delete('gearshifts/{id}', [GearshiftController::class, 'destroy'])->name('destroyGearshift');
 
 
-// FUEL
+//FUELS
 Route::get('fuels', [FuelController::class, 'index'])->name('fuels');
 Route::get('fuels/create', [FuelController::class, 'create'])->name('createFuel');
 Route::post('fuels', [FuelController::class, 'store'])->name('storeFuel');
@@ -79,3 +80,12 @@ Route::get('fuels/{id}/edit', [FuelController::class, 'edit'])->name('editFuel')
 Route::patch('fuels/{id}', [FuelController::class, 'update'])->name('updateFuel');
 Route::delete('fuels/{id}', [FuelController::class, 'destroy'])->name('destroyFuel');
 // Route::post('fuels/search', [FuelController::class, 'search'])->name('searchFuel');
+
+//Colors
+Route::get('Colors', [ColorController::class, 'index'])->name('colors');
+Route::get('colors/create', [ColorController::class, 'create'])->name('createColor');
+Route::post('colors', [ColorController::class, 'store'])->name('storeColor');
+Route::get('colors/{id}/edit', [ColorController::class, 'edit'])->name('editColor');
+Route::patch('colors/{id}', [ColorController::class, 'update'])->name('updateColor');
+Route::delete('colors/{id}', [ColorController::class, 'destroy'])->name('destroyColor');
+// Route::post('colors/search', [ColorController::class, 'search'])->name('searchColor');

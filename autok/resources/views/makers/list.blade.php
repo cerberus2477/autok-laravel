@@ -3,6 +3,7 @@
 @section('title', 'Gyártók (GET Maker)')
 
 <div>
+    <h3>Ide majd a fuelből kimásolva frissíteni kéne a templatet (pl legyenek gombok)</h3>
     <table class="editable">
         <thead>
             <tr>

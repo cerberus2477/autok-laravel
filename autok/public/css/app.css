@@ -6,6 +6,7 @@
     --clr-bg-light: #1f1f1f;
     --clr-border: #333;
     --clr-highlight: rgb(113, 147, 242);
+    --clr-error: rgb(255, 67, 67);
 }
 
 .btn {
@@ -31,9 +32,17 @@ a.btn {
     text-decoration: none;
 }
 
+.nav-left {
+    margin-right: auto;
+}
 
-.order {}
+.border-left {
+    border-left: 2px solid var(--clr-border);
+}
 
+.error {
+    color: var(--clr-error);
+}
 
 
 /* NAV -----------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -49,14 +58,11 @@ nav ul {
     flex-wrap: wrap;
 }
 
-nav ul li {
-    margin-right: 20px;
-}
 
 nav ul li a {
     color: var(--clr-text);
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 1rem 2rem;
     display: block;
 }
 

@@ -12,7 +12,7 @@ class FuelController extends Controller
      */
     public function index()
     {
-        return view('fuels/list', ['entities' => Fuel::all()]);
+        return view('fuels.list', ['entities' => Fuel::all()]);
     }
 
     /**
@@ -20,7 +20,7 @@ class FuelController extends Controller
      */
     public function create()
     {
-        //
+        return view('createFuel');
     }
 
     /**
@@ -44,7 +44,9 @@ class FuelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $entity = Fuel::find($id);
+        return view('fuels.edit', ['entity' => $entity]);
+        // return view('fuels.edit', compact($entity));
     }
 
     /**

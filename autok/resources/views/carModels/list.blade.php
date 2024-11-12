@@ -4,6 +4,7 @@
 
 <div>
     <!-- <input type="button" class="btn" value="Új carModel hozzáadása" onclick={{route('createCarModel')}}> -->
+    <h3>Frissíteni kéne a Fuels táblából</h3>
     <table>
         <thead>
             <tr>
@@ -20,10 +21,10 @@
                     <td>{{$entity->makerId}}</td>
                     <td>{{$entity->name}}</td>
                     <!-- <td>
-                            <input type="button" class="btn" onclick="editRow()" value="Módosít">
-                            <input style="display: none;" type="button" class="btn" onclick={{route('fuels')}} value="Mentés">
-                            <input type="button" class="btn" onclick="{{route('fuels')}}" value="Töröl">
-                        </td> -->
+                                <input type="button" class="btn" onclick="editRow()" value="Módosít">
+                                <input style="display: none;" type="button" class="btn" onclick={{route('fuels')}} value="Mentés">
+                                <input type="button" class="btn" onclick="{{route('fuels')}}" value="Töröl">
+                            </td> -->
                 </tr>
             @endforeach
         </tbody>
