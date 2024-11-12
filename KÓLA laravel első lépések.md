@@ -115,22 +115,6 @@ Route::get('/bodies/{body}', [BodyController::class, 'show'])->name('bodies.show
 
 
 
-### Az input validálása esetén ki kell íratni a hibákat:
-
-`php artisan make:view error`
-
-```html
-@if($errors->any())
-    <div class="alert alert-warning">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-```
-
 
 ### Kiírjuk a sikeres létrehozás, törlés stb üzenetek helyét
 
@@ -397,3 +381,63 @@ class BodieSeeder extends Seeder
 ```
  
 
+
+
+
+## Validálás
+- ***van róla a dokumentációban több***
+- jó dolog validálni a bemenő dolgokat
+
+validationrules.php - trait asszem, be kell useolni majd
+```php
+getNameValidationRules()
+
+return
+[
+	['name' => 'requires|min:3|max:255',],
+	[
+	'name.min' => 'A megnevezés legalább 3 karakter hosszú kell legyen.',
+	'name.max' => 'A megnevezés legalább 3 karakter hosszú kell legyen.'
+	]
+];
+```
+
+
+fuelcontroller.php
+```php
+public functuion store(){
+	$request->validate($this->getNameValidationRules());
+	$fuel = new Fuel();
+	$fuel->name = $request->inpit('name');
+}
+```
+
+updatenel is validate
+```php
+public functuion update(){
+	$request->validate($this->getNameValidationRules());
+	$fuel = Fuel::find($id);
+	$fuel->name = $request->input('name');
+	$fuel->save();
+
+	return redirect()->route('fuels.index')->with('');
+}
+
+```
+
+
+### Az input validálása esetén ki kell íratni a hibákat:
+
+`php artisan make:view error`
+
+```html
+@if($errors->any())
+    <div class="alert alert-warning">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+```
