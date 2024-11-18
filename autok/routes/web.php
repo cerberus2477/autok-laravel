@@ -28,7 +28,7 @@ Route::delete('vehichles/{id}', [VehichleController::class, 'destroy'])->name('d
 
 //MAKER -- ez még a régi
 Route::get('makers', [MakerController::class, 'index'])->name('makers');
-Route::post('maker', [MakerController::class, 'store'])->name('maker');
+Route::post('maker', [MakerController::class, 'store'])->name('storeMaker');
 Route::get('maker/create', [MakerController::class, 'create'])->name('createMaker');
 Route::post('maker/{id}}', [MakerController::class, 'edit'])->name('editMaker');
 Route::patch('maker/create', [MakerController::class, 'update'])->name('updateMaker');
