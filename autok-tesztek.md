@@ -4,7 +4,8 @@ tesztek egy része arról szólna, hogy a bejelentkezett felhasználó látja-e,
 - régi node.js van úgyhogy nem is lenne egyszerű  a login a sulis gépeken
 - otthon / videóban jó lenne gyakorolni tho
 
-1. meg kell nézni van e-phpunit.xml (lennie kell)
+## meg kell nézni van e-phpunit.xml (lennie kell)
+ne legyen kikommentelve az a két sor
 
 ## MakerControllerTest
 `php artisan make:test MakerControllerTest --unit`
@@ -45,9 +46,18 @@ ide írjuk hogy hogyan generálja a kamu adatokat ig
 nem akarjuk hogy az éles adatbázison fussanak a tesztek, ezért kell. lekopizzuk a .envet. 
 - db connection sqlite
 - db database = cars_test
-	- lehet létre kéne hozni
+	- ez még nem létezik, következő lépésben létrehozzuk
+
+## Létrehozzuk az adatbázist
+cmdből `c:\xampp\mysql\bin\mysql -u root `
+(ha a path-hez hozzáadnánk lehetne csak mysql)
+- create database cars_test
+
+
 
 ## Nézzük meg működik e
 `vendor\bin\phpunit`
 1. xamppot el kell indítani már ehhez, meg a szervert
+- ott tartunk hogy az eslő assert lefut, a második (hogy megkapja e a makerst) hibát dob.
 
+a jól lefutott teszteket nem írja, csak ahol elakad.
