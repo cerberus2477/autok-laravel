@@ -13,7 +13,7 @@ A Laravelnél a frontendhez *Blade* fájlokat használunk.
 
 
 
-## 1. lépés
+## 1. lépés - layouts.app
 
 ```php artisan make:view layouts.app```
 
@@ -49,7 +49,7 @@ A Laravelnél a frontendhez *Blade* fájlokat használunk.
 kell bele sokminden
 ```
 
-## 2. lépés
+## 2. lépés - view carmakers.list
 
 ```php artisan make:view carMakers.list``` 
 
@@ -118,7 +118,7 @@ minden modelhez kéne  3 view
 
 
 
-## 3. lépés
+## 3. lépés - controller MakerController
 
 ```php artisan make:controller MakerController --resource```
 

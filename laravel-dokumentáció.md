@@ -83,15 +83,15 @@ php artisan make:controller PhotoController --model=Photo --resource --requests
 ```
 #### [Actions Handled by Resource Controllers](https://laravel.com/docs/11.x/controllers#actions-handled-by-resource-controllers)
 
-|Verb|URI|Action|Route Name|
-|---|---|---|---|
-|GET|`/photos`|index|photos.index|
-|GET|`/photos/create`|create|photos.create|
-|POST|`/photos`|store|photos.store|
-|GET|`/photos/{photo}`|show|photos.show|
-|GET|`/photos/{photo}/edit`|edit|photos.edit|
-|PUT/PATCH|`/photos/{photo}`|update|photos.update|
-|DELETE|`/photos/{photo}`|destroy|photos.destroy|
+| Verb      | URI                    | Action  | Route Name     |
+| --------- | ---------------------- | ------- | -------------- |
+| GET       | `/photos`              | index   | photos.index   |
+| GET       | `/photos/create`       | create  | photos.create  |
+| POST      | `/photos`              | store   | photos.store   |
+| GET       | `/photos/{photo}`      | show    | photos.show    |
+| GET       | `/photos/{photo}/edit` | edit    | photos.edit    |
+| PUT/PATCH | `/photos/{photo}`      | update  | photos.update  |
+| DELETE    | `/photos/{photo}`      | destroy | photos.destroy |
 
 ### [Partial Resource Routes](https://laravel.com/docs/11.x/controllers#restful-partial-resource-routes)
 

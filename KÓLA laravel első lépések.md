@@ -1,39 +1,130 @@
 
 laravel projekt létrehozása:
+ `composer create-project laravel/laravel [project_name]`
 
-```cmd
- composer create-project laravel/laravel [project_name]
-```
-
-### 1.
+### 1. Migration (tábla) készítése
 ` php artisan make:migration create_[table_name]_table`
-A table_name legyen angolul és többes számban, pl bodies, makers stb.
-A $table->timestamps(); nem kell
+- A table_name legyen angolul és többes számban, pl bodies, makers stb.
+- A $table->timestamps(); nem kell
 
-### 2.
+### 2. Model (rekord) készítése
 `` php artisan make:model [ModelName]`
 - A ModelName legyen ugyanaz, mint ami a tábla neve volt, csak egyes számban, pl: Body, Maker stb
 - Ha a $table->timestamps(); sort kivettük a migrációból, akkor a modellbe kell:
- public $timestamps = false;
+ `public $timestamps = false;`
 
-### 3. 
+### 3. Controller (egy táblához tartozó requestek) készítése
 `php artisan make:controller [ControllerName] --resource`
 - A ControllerName legyen ugyanaz, mint a ModelName + Controller, pl: BodyController, MakerController
 
-### 4. 
+#### Controller példa
+ * BodyController.php
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Body;
+use App\Traits\ValidationRules;
+use Illuminate\Http\Request;
+
+class BodyController extends Controller
+{
+    use ValidationRules;
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $bodies = Body::all();
+        return view('body.index', compact('bodies'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('body.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate($this->getNameValidationRules());
+        $body  = new Body();
+        $body->name = $request->input('name');
+        $body->save();
+
+        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen létrehozva");
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $body = Body::find($id);
+        return view('body.show', compact('body'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $body = Body::find($id);
+        return view('body.edit', compact('body'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $request->validate($this->getNameValidationRules());
+        $body  = Body::find($id);
+        $body->name = $request->input('name');
+        $body->save();
+
+        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen módosítva");
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $body  = Body::find($id);
+        $body->delete();
+
+        return redirect()->route('bodies.index')->with('success', "Sikeresen törölve");
+    }
+}
+```
+
+
+### 4. View-k készítése
 ```cmd
-> php artisan make:view table_name.index
-> php artisan make:view table_name.edit
+> php artisan make:view table_name.list
+> 
+> php artisan make:view table_name.create
 > php artisan make:view table_name.store
+> php artisan make:view table_name.edit
+
 > php artisan make:view table_name.destroy
 opcionális:
 > php artisan make:view table_name.show
+> > php artisan make:view table_name.index
 ```
 
 pl. php artisan make:view bodies.index
  stb
 
-### 5.
+### 5. Web.php-ban a requestek megadása
+***(meghívjuk őket a controllerből)***
 routes/web.php
 pl:
 ```php
@@ -134,7 +225,7 @@ Route::get('/bodies/{body}', [BodyController::class, 'show'])->name('bodies.show
 </div>
 
 
- * create.blade.php
+ ## create.blade.php
 ```html
 <!-- itt hozza be a layout.blade.php fájlt, ami a program frontendjének a kerete a menüvel, lábléccel stb. -->
 @extends('layout')
@@ -192,7 +283,7 @@ Route::get('/bodies/{body}', [BodyController::class, 'show'])->name('bodies.show
 ```
 
 
- ## index.blade.php
+ ## index.blade.php / list
  ```html
  @extends('layout')
 
@@ -240,94 +331,6 @@ Route::get('/bodies/{body}', [BodyController::class, 'show'])->name('bodies.show
     </div>
 @endsection 
 
-```
-
-
- * BodyController.php
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Models\Body;
-use App\Traits\ValidationRules;
-use Illuminate\Http\Request;
-
-class BodyController extends Controller
-{
-    use ValidationRules;
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $bodies = Body::all();
-        return view('body.index', compact('bodies'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('body.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate($this->getNameValidationRules());
-        $body  = new Body();
-        $body->name = $request->input('name');
-        $body->save();
-
-        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen létrehozva");
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $body = Body::find($id);
-        return view('body.show', compact('body'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $body = Body::find($id);
-        return view('body.edit', compact('body'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $request->validate($this->getNameValidationRules());
-        $body  = Body::find($id);
-        $body->name = $request->input('name');
-        $body->save();
-
-        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen módosítva");
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $body  = Body::find($id);
-        $body->delete();
-
-        return redirect()->route('bodies.index')->with('success', "Sikeresen törölve");
-    }
-}
 ```
 
 
@@ -405,7 +408,7 @@ return
 
 fuelcontroller.php
 ```php
-public functuion store(){
+public function store(){
 	$request->validate($this->getNameValidationRules());
 	$fuel = new Fuel();
 	$fuel->name = $request->inpit('name');
@@ -414,7 +417,7 @@ public functuion store(){
 
 updatenel is validate
 ```php
-public functuion update(){
+public function update(){
 	$request->validate($this->getNameValidationRules());
 	$fuel = Fuel::find($id);
 	$fuel->name = $request->input('name');
@@ -441,3 +444,16 @@ public functuion update(){
     </div>
 @endif
 ```
+
+
+## Hibák / TODO
+táblák nincsenek feltöltve
+nincsenek viewk
+
+deletehez miért kell view? kell?
+
+colorconstrollerben nem ismeri fel a validationrulest
+
+
+## DONE amit le kene csekkolni
+elvileg van error view

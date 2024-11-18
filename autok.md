@@ -17,8 +17,7 @@ DB_DATABASE=cars
 DB_USERNAME=root
 DB_PASSWORD= 
 
-
-#### 3. Létrehozunk egy adatbázis schemát
+####Létrehozunk egy adatbázis schemát
 
    stackoverflowt követjük: https://stackoverflow.com/questions/32191135/how-to-create-database-schema-table-in-laravel
    
@@ -27,8 +26,8 @@ DB_PASSWORD=
    
       - fill the content of App\Console\Commands\createdb.php, dropdb ugyanígy
    
-
-``` php
+```
+php
 use Illuminate\Support\Facades\DB;
 
 
@@ -55,10 +54,15 @@ use Illuminate\Support\Facades\DB;
         config(["database.connections.mysql.database" => $schemaName]);
     }
 }
-```
+``` 
 
 
-4. #### ``` php artisan mysql:createdb autok ```
+
+
+
+### 4. 
+
+ ####` php artisan mysql:createdb autok `
 
    - ezzel hozzuk létre ezeket a parancsokat a developereknek kb
 
@@ -69,15 +73,14 @@ use Illuminate\Support\Facades\DB;
 
 
 
-1. ####  migrációt létrehozni amiben a gyártók vannak, id legyen és név
+####  migrációt létrehozni amiben a gyártók vannak, id legyen és név
 
    - ``` php artisan make:migration create_makers_table ```
 
    - ``` $table->string('name'); ``` database˛\migrations\ az új fájlba kb 15. sor
 
      
-
-2. #### Maker model létrehozása
+#### Maker model létrehozása
 
    - ``` artisan make:model Maker```
    - ```timestamp = false``` kell
@@ -95,7 +98,7 @@ use Illuminate\Support\Facades\DB;
    
    
    
-3. #### feltölteni a maker migrációt adatokkal
+#### feltölteni a maker migrációt adatokkal
 
 - írunk egy artisan parancsot amivel feldolgozzuk a csv fájlt -> *fillMakersFromCsv*
   - megniytjuk, fgetcsv, soronként, csak a különbözőt beolvassuk
