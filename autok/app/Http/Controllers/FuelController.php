@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\FuelRequest;
 use App\Models\Fuel;
+
 
 class FuelController extends Controller
 {
@@ -12,7 +13,8 @@ class FuelController extends Controller
      */
     public function index()
     {
-        return view('fuels.list', ['entities' => Fuel::all()]);
+        // $fuels = Fuel::all();
+        return view('fuels.index', ['entities' => Fuel::all()]);
     }
 
     /**
@@ -20,24 +22,20 @@ class FuelController extends Controller
      */
     public function create()
     {
-        return view('createFuel');
+        return view('fuels.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FuelRequest $request)
     {
-        //
+        Fuel::create($request->validated());
+
+        return redirect()->route('fuels.index')->with('success', 'Fuel created successfully!');
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -52,9 +50,15 @@ class FuelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FuelRequest $request, string $id)
     {
-        //
+        $fuel = Fuel::find($id);
+        $fuel->update($request->validated());
+        // $validatedrequest = $request->validated();
+        // $fuel->name = $validatedrequest->input('name');
+        // $fuel->save();
+
+        return redirect()->route('fuels.index')->with('success', "Fuel updated successfully");
     }
 
     /**
@@ -62,6 +66,11 @@ class FuelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $fuel = Fuel::find($id);
+        $fuel->delete();
+
+        return redirect()->route('fuels.index')->with('success', "Fuel deleted successfully");
     }
 }
+
+

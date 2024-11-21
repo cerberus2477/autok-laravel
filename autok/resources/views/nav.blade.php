@@ -8,7 +8,7 @@
 
         <li class="border-left"><a href="{{route('bodies')}}">Karossszériák - Bodies</a></li>
         <li><a href="{{route('gearshifts')}}">Sebváltók - Gearshifts</a></li>
-        <li><a href="{{route('fuels')}}">Üzemanyagok - Fuels</a></li>
+        <li><a href="{{route('fuels.index')}}">Üzemanyagok - Fuels</a></li>
         <li><a href="{{route('colors')}}">Színek - Colors</a></li>
 
     </ul>

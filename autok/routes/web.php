@@ -73,12 +73,15 @@ Route::delete('gearshifts/{id}', [GearshiftController::class, 'destroy'])->name(
 
 
 //FUELS
-Route::get('fuels', [FuelController::class, 'index'])->name('fuels');
-Route::get('fuels/create', [FuelController::class, 'create'])->name('createFuel');
-Route::post('fuels', [FuelController::class, 'store'])->name('storeFuel');
-Route::get('fuels/{id}/edit', [FuelController::class, 'edit'])->name('editFuel');
-Route::patch('fuels/{id}', [FuelController::class, 'update'])->name('updateFuel');
-Route::delete('fuels/{id}', [FuelController::class, 'destroy'])->name('destroyFuel');
+Route::resource('fuels', FuelController::class);
+
+// Route::get('fuels', [FuelController::class, 'index'])->name('fuels');
+// Route::get('fuels/create', [FuelController::class, 'create'])->name('createFuel');
+// Route::post('fuels', [FuelController::class, 'store'])->name('storeFuel');
+// Route::get('fuels/{id}/edit', [FuelController::class, 'edit'])->name('editFuel');
+// Route::patch('fuels/{id}', [FuelController::class, 'update'])->name('updateFuel');
+// Route::delete('fuels/{id}', [FuelController::class, 'destroy'])->name('destroyFuel');
+
 // Route::post('fuels/search', [FuelController::class, 'search'])->name('searchFuel');
 
 //Colors

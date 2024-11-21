@@ -1,8 +1,11 @@
 @extends('layouts.app')
+
 @section('content')
+<h1>Fuel módosítása</h1>
 <div>
     @include('error')
-    <form action="{{ route('updateFuel', $entity->id) }}" method="post">
+    @include('success')
+    <form action="{{ route('fuels.update', $entity->id) }}" method="post">
         @csrf
         @method('PATCH')
         <fieldset>
@@ -11,7 +14,7 @@
         </fieldset>
 
         <button class="btn" type="submit">Mentés</button>
-        <a class="btn" href="{{ route('fuels') }}">Mégse</a>
+        <a class="btn" href="{{ route('fuels.index') }}">Mégse</a>
     </form>
 </div>
 @endsection
