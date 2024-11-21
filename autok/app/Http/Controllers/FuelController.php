@@ -32,7 +32,7 @@ class FuelController extends Controller
     {
         Fuel::create($request->validated());
 
-        return redirect()->route('fuels.index')->with('success', 'Fuel created successfully!');
+        return redirect()->route('fuels.index')->with('success', 'Fuel created successfully');
 
     }
 

@@ -24,7 +24,7 @@ class FuelControllerTest extends TestCase
         Fuel::factory()->count(3)->create();
 
         //send get request to the index route
-        $response = $this->get(route('fuels')); //makers.indexnek megfelelő kell
+        $response = $this->get(route('fuels.index')); //makers.indexnek megfelelő kell
 
         $response->assertStatus(200);
 
@@ -37,13 +37,14 @@ class FuelControllerTest extends TestCase
 
         $fuelData = ['name' => 'New Fuel'];
 
-        $response = $this->post(route('storeFuel'), $fuelData); //makers.store-nek megfelelő
+        $response = $this->post(route('fuels.store'), $fuelData); //makers.store-nek megfelelő
 
-        $response->assertRedirect(route('makers'));
+        $response->assertRedirect(route('fuels.index'));
 
         //Assert that the response redirects to the makers indx route with a success
-        $this->assertDatabaseHas('entities', $fuelData);
-        $response->assertSessionHas('success', 'New Fuel sikeresen létrehozva'); //ugyanaz kell mint a makercontrollerbe
+        $this->assertDatabaseHas('fuels', $fuelData);
+        // $response->assertStatus(200);
+        $response->assertSessionHas('success', 'Fuel created successfully'); //ugyanaz kell mint a makercontrollerbe
 
     }
 
@@ -57,14 +58,30 @@ class FuelControllerTest extends TestCase
 
         $updatedData = ['name' => 'Updated Fuel'];
 
-        $response = $this->patch(route('updateFuels', $fuel->id), $updatedData);
-
-        $response->assertRedirect(route('fuels'));
+        $response = $this->patch(route('fuels.update', $fuel->id), $updatedData);
 
         //Assert that the maker was updated in the database
-        $this->assertDatabaseHas('entities', $updatedData);
-        $response->assertRedirect(route('fuels')); //lehet ez véletlenül van itt
-        $response->assertSessionHas('success', 'Updated Fuel sikeresen módosítva'); //ugyanaz kell mint a makercontrollerbe
+        $this->assertDatabaseHas('fuels', $updatedData);
+        $response->assertRedirect(route('fuels.index')); //lehet ez véletlenül van itt
+        $response->assertSessionHas('success', 'Fuel updated successfully'); //ugyanaz kell mint a makercontrollerbe
 
+    }
+
+    public function test_user_can_delete_fuel()
+    {
+
+        $fuel = Fuel::factory()->create();
+
+        //Simulate an authenticated user
+        // $this->actingAs(User::factory()->create());
+
+        $response = $this->delete(route('fuels.destroy', $fuel->id));
+
+        $response->assertRedirect(route('fuels.index'));
+
+        //Assert that the maker was updated in the database
+        $this->assertDatabaseMissing('fuels', [$fuel]);
+        $response->assertRedirect(route('fuels.index')); //lehet ez véletlenül van itt
+        $response->assertSessionHas('success', 'Fuel deleted successfully'); //ugyanaz kell mint a makercontrollerbe
     }
 }
