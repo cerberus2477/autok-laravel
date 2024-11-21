@@ -5,11 +5,12 @@
 <div>
     @include('success')
     @include('error')
-    <a class="btn" href="{{route("fuels.create")}}" title="Új">Új Fuel hozzáadása</a>
-    <!-- <a class="order" href="{{route("fuels.index", ["sort_by" => "name", "sort_dir" => "asc"])}}" title="ABC">ABC</a>
-    <a class="order" href="{{route("fuels.index", ["sort_by" => "name", "sort_dir" => "desc"])}}" title="ZYX">ZYX</a> -->
 
-    <h1>Fuels</h1>
+    <div class="title-add">
+        <h1>Fuels</h1>
+        <a href="{{ route('fuels.create') }}" class="btn btn-add">Új rekord hozzáadása <i
+                class="fa-solid fa-plus"></i></a>
+    </div>
     <table>
         <thead>
             <tr>
